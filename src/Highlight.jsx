@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { Link } from "react-router";
+import { infoData } from "./data/infoData";
+import { sambutanData } from "./data/sambutanData";
 
 function Highlight() {
   const poster = [
@@ -8,12 +11,7 @@ function Highlight() {
     "/poster4.jpg",
   ]
 
-  const pengumuman = [
-    { judul: "Pengumuman SPMB Jalur Afirmasi Disabilitas", gambar: "/p1.jpg" },
-    { judul: "Pengumuman Kelulusan Siswa Kelas IX Tahun Ajaran 2025/2026", gambar: "/p2.jpg" },
-    { judul: "Asesmen Sumatif Tengah Semester Ganjil 2025", gambar: "/p3.jpg" },
-    { judul: "Pembagian Ruang Seleksi Mata Pelajaran Pilihan", gambar: "/p4.jpg" },
-  ]
+  const pengumuman = infoData.slice(0, 4);
 
   const [aktif, setAktif] = useState(0)
   const [transisiAktif, setTransisiAktif] = useState(true)
@@ -28,23 +26,22 @@ function Highlight() {
 
   // Reset diam-diam saat sampai set kedua
   useEffect(() => {
-  if (aktif >= poster.length) {
-    // 1. Tunggu animasi geser ke set kedua selesai
-    const t = setTimeout(() => {
-      setTransisiAktif(false)          // matikan transisi
-      setAktif(aktif - poster.length)  // lompat balik (tak terlihat)
-    }, 500)
-    return () => clearTimeout(t)
-  }
-}, [aktif])
+    if (aktif >= poster.length) {
+      const t = setTimeout(() => {
+        setTransisiAktif(false)
+        setAktif(aktif - poster.length)
+      }, 500)
+      return () => clearTimeout(t)
+    }
+  }, [aktif])
 
-// Nyalakan transisi lagi SETELAH posisi melompat (di tick berikutnya)
-useEffect(() => {
-  if (!transisiAktif) {
-    const t = setTimeout(() => setTransisiAktif(true), 50)
-    return () => clearTimeout(t)
-  }
-}, [transisiAktif])
+  // Nyalakan transisi lagi setelah posisi melompat
+  useEffect(() => {
+    if (!transisiAktif) {
+      const t = setTimeout(() => setTransisiAktif(true), 50)
+      return () => clearTimeout(t)
+    }
+  }, [transisiAktif])
 
   const posterGanda = [...poster, ...poster]
 
@@ -91,20 +88,21 @@ useEffect(() => {
             <h3 className="text-white text-xl font-bold">Pengumuman</h3>
           </div>
           <div className="flex-1 p-4">
-            {pengumuman.map((item, index) => (
-              <div
-                key={index}
+            {pengumuman.map((item) => (
+              <Link
+                to={`/info-sekolah/${item.id}`}
+                key={item.id}
                 className="flex items-center gap-3 py-3 border-b border-slate-700 cursor-pointer hover:bg-slate-700 rounded px-2"
               >
                 <img src={item.gambar} alt={item.judul} className="w-16 h-16 object-cover rounded shrink-0" />
                 <p className="text-gray-200 text-sm">{item.judul}</p>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="px-6 py-4">
-            <button className="text-amber-400 font-bold hover:text-amber-300 cursor-pointer">
+            <Link to="/info-sekolah" className="text-amber-400 font-bold hover:text-amber-300 cursor-pointer">
               READ MORE »
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -113,18 +111,17 @@ useEffect(() => {
           <div className="p-6 flex flex-col gap-4">
             <h3 className="text-white text-xl font-bold">Sambutan Kepala Sekolah</h3>
             <video controls className="w-full rounded-lg">
-              <source src="/sambutan.mp4" type="video/mp4" />
+              <source src={sambutanData.video} type="video/mp4" />
               Browser Anda tidak mendukung video.
             </video>
-            <p className="text-gray-300 italic text-sm">Bismillahirrahmanirrahim</p>
-            <p className="text-gray-300 italic text-sm">Assalamu'alaikum Wr. Wb.</p>
-            <p className="text-gray-300 text-sm">
-              Segala puji hanya untuk Allah SWT, shalawat serta salam semoga
-              tercurah kepada Nabi Muhammad SAW, keluarga, dan sahabatnya...
-            </p>
-            <button className="text-amber-400 font-bold hover:text-amber-300 cursor-pointer self-start">
+            {sambutanData.isi.slice(0, 3).map((paragraf, index) => (
+              <p key={index} className={`text-gray-300 text-sm ${index < 2 ? "italic" : ""}`}>
+                {paragraf}
+              </p>
+            ))}
+            <Link to="/profil/sambutan" className="text-amber-400 font-bold hover:text-amber-300 cursor-pointer self-start">
               Read More »
-            </button>
+            </Link>
           </div>
         </div>
 

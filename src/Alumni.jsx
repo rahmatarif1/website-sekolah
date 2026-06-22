@@ -1,13 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router'
+import { alumni } from './data/alumniData'
 
 function Alumni() {
-  const alumni = [
-    { nama: "Rita Juliawati, S.Pd., Gr.", kisah: "Rita Juliawati adalah Kepala MTs N 1 Palangka Raya dilantik pada 08 Juli 2024..", foto: "/alumni1.jpg" },
-    { nama: "Resty Aulia Nurmaya Ulfi, S.Pd.", kisah: "Kepala Staf Urusan Haji dan Umrah di Kementrian Agama Wilayah Kalimantan Tengah.", foto: "/alumni2.jpg" },
-    { nama: "Nabilatul Ulum Fitria", kisah: "Lulusan terbaik.", foto: "/alumni3.jpg" },
-    { nama: "Alif Muhammad Reza", kisah: "Lulusan Terbaik.", foto: "/alumni4.jpg" },
-  ]
-
   const [perView, setPerView] = useState(2)
   const [mulai, setMulai] = useState(0)
   const [transisiAktif, setTransisiAktif] = useState(true)
@@ -74,16 +69,18 @@ function Alumni() {
           >
             {kartuGanda.map((item, index) => (
               <div key={index} className="w-full md:w-1/2 shrink-0 px-3">
-                <div className="bg-blue-900/50 border border-blue-800 rounded-lg p-6 flex flex-col md:flex-row gap-4 h-full items-center md:items-start text-center md:text-left">
-                  <img src={item.foto} alt={item.nama} className="w-32 h-40 object-cover rounded shrink-0" />
-                  <div>
-                    <h3 className="text-amber-400 font-bold mb-2">{item.nama}</h3>
-                    <p className="text-gray-300 text-sm">
-                      <span className="text-amber-400 text-2xl">"</span>
-                      {item.kisah}
-                    </p>
+                <Link to={'/alumni/' + item.id} className="block h-full">
+                  <div className="bg-blue-900/50 border border-blue-800 rounded-lg p-6 flex flex-col md:flex-row gap-4 h-full items-center md:items-start text-center md:text-left transition hover:border-amber-400">
+                    <img src={item.foto} alt={item.nama} className="w-32 h-40 object-cover rounded shrink-0" />
+                    <div>
+                      <h3 className="text-amber-400 font-bold mb-2">{item.nama}</h3>
+                      <p className="text-gray-300 text-sm">
+                        <span className="text-amber-400 text-2xl">"</span>
+                        {item.kisah}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>

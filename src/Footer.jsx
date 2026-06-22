@@ -1,16 +1,12 @@
-
+import { Link } from "react-router";
 import logo from './assets/logo.png'
+import { infoData } from "./data/infoData";
+import { agendaData } from "./data/agendaData";
 
 function Footer() {
-  const info = [
-    { gambar: "/p1.jpg", judul: "Pengumuman SPMB Jalur Afirmasi", tanggal: "26 Mei, 2026", ringkasan: "Diberitahukan kepada calon murid Jalur Afirmasi Disabilitas..." },
-    { gambar: "/p2.jpg", judul: "Pengumuman Kelulusan", tanggal: "04 Mei, 2026", ringkasan: "Hasil Kelulusan Siswa Kelas IX Tahun Ajaran 2025/2026 bisa..." },
-  ]
-
-  const agenda = [
-    { gambar: "/a1.jpg", judul: "Surat Edaran Kelulusan", tanggal: "18 Apr, 2026", ringkasan: "Surat Edaran Kelulusan Siswa Kelas IX Tahun Ajaran 2025/2026..." },
-    { gambar: "/a2.jpg", judul: "Pembagian Laporan Hasil Belajar", tanggal: "13 Mei, 2026", ringkasan: "Pembagian laporan hasil belajar siswa akan dilaksanakan pada..." },
-  ]
+  // ambil 2 teratas dari masing-masing data terpusat
+  const info = infoData.slice(0, 2);
+  const agenda = agendaData.slice(0, 2);
 
   return (
     <footer className="bg-blue-950 text-white">
@@ -27,31 +23,25 @@ function Footer() {
             berilmu, dan berprestasi, dengan landasan nilai-nilai keislaman.
           </p>
           <div className="flex gap-3">
-  <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">
-    f
-  </a>
-  <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">
-    IG
-  </a>
-  <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">
-    YT
-  </a>
-</div>
+            <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">f</a>
+            <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">IG</a>
+            <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">YT</a>
+          </div>
         </div>
 
         {/* KOLOM 2 — Info Sekolah */}
         <div>
           <h3 className="text-lg font-bold mb-6">INFO SEKOLAH</h3>
           <div className="flex flex-col gap-4">
-            {info.map((item, index) => (
-              <div key={index} className="flex gap-3">
+            {info.map((item) => (
+              <Link to={`/info-sekolah/${item.id}`} key={item.id} className="flex gap-3 group">
                 <img src={item.gambar} alt={item.judul} className="w-16 h-16 object-cover rounded shrink-0" />
                 <div>
-                  <h4 className="text-amber-400 font-bold text-sm">{item.judul}</h4>
-                  <p className="text-gray-400 text-xs mb-1">{item.tanggal}</p>
+                  <h4 className="text-amber-400 font-bold text-sm group-hover:underline">{item.judul}</h4>
+                  <p className="text-gray-400 text-xs mb-1">{item.tanggal} {item.bulan}, {item.tahun}</p>
                   <p className="text-gray-300 text-sm">{item.ringkasan}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -60,15 +50,15 @@ function Footer() {
         <div>
           <h3 className="text-lg font-bold mb-6">AGENDA SEKOLAH</h3>
           <div className="flex flex-col gap-4">
-            {agenda.map((item, index) => (
-              <div key={index} className="flex gap-3">
+            {agenda.map((item) => (
+              <Link to={`/agenda/${item.id}`} key={item.id} className="flex gap-3 group">
                 <img src={item.gambar} alt={item.judul} className="w-16 h-16 object-cover rounded shrink-0" />
                 <div>
-                  <h4 className="text-amber-400 font-bold text-sm">{item.judul}</h4>
-                  <p className="text-gray-400 text-xs mb-1">{item.tanggal}</p>
+                  <h4 className="text-amber-400 font-bold text-sm group-hover:underline">{item.judul}</h4>
+                  <p className="text-gray-400 text-xs mb-1">{item.tanggal} {item.bulan}, {item.tahun}</p>
                   <p className="text-gray-300 text-sm">{item.ringkasan}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

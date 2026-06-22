@@ -1,10 +1,8 @@
+import { Link } from "react-router";
+import { prestasiData } from "./data/prestasiData";
+
 function Prestasi() {
-  const prestasi = [
-    { gambar: "/prestasi1.jpg", judul: "Juara 2 Panahan Compound Olympic Round Team", tanggal: "06 Apr, 2026", skala: "Skala Provinsi", siswa: "Faith Radithya Muhammad XI F6" },
-    { gambar: "/prestasi2.jpg", judul: "Juara 2 Panahan Compound Olympic Round Individual", tanggal: "06 Apr, 2026", skala: "Skala Provinsi", siswa: "Faith Radithya Muhammad, XI F6" },
-    { gambar: "/prestasi3.jpg", judul: "Juara 3 PORDA Wushu", tanggal: "05 Apr, 2026", skala: "Skala Provinsi", siswa: "Ahmad Fauzan, X A2" },
-    { gambar: "/prestasi4.jpg", judul: "Juara 1 MTQ Tingkat Kota", tanggal: "12 Mar, 2026", skala: "Skala Kota", siswa: "Siti Nurhaliza, IX B1" },
-  ]
+  const prestasiTampil = prestasiData.slice(0, 4); // 4 teratas di beranda
 
   return (
     <section id="prestasi" className="px-8 py-16 bg-slate-100">
@@ -16,21 +14,18 @@ function Prestasi() {
         <span className="w-4 h-1 bg-amber-400"></span>
       </div>
 
-      {/* Kotak dengan scroll internal */}
       <div className="max-w-5xl mx-auto flex flex-col gap-6">
-        {prestasi.map((item, index) => (
-          <div
-  key={index}
-  className="flex flex-col md:flex-row gap-6 bg-white rounded-lg shadow-md overflow-hidden min-h-[16rem]"
->
-            {/* Foto besar */}
+        {prestasiTampil.map((item) => (
+          <Link
+            to={`/prestasi/${item.id}`}
+            key={item.id}
+            className="flex flex-col md:flex-row gap-6 bg-white rounded-lg shadow-md overflow-hidden min-h-[16rem] hover:shadow-xl transition-shadow"
+          >
             <img
-  src={item.gambar}
-  alt={item.judul}
-  className="w-full md:w-72 h-48 md:h-auto object-cover shrink-0"
-/>
-
-            {/* Detail */}
+              src={item.gambar}
+              alt={item.judul}
+              className="w-full md:w-72 h-48 md:h-auto object-cover shrink-0"
+            />
             <div className="p-6 flex flex-col justify-center">
               <h3 className="text-xl font-bold text-blue-950 mb-3">{item.judul}</h3>
               <p className="text-gray-600 mb-3 flex items-center gap-2">
@@ -42,11 +37,21 @@ function Prestasi() {
                 <span>👤</span> {item.siswa}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
+
+      {/* Tombol Tampilkan Semua */}
+      <div className="text-center mt-10">
+        <Link
+          to="/prestasi"
+          className="inline-block border-2 border-amber-400 text-amber-500 font-bold px-8 py-3 rounded hover:bg-amber-400 hover:text-blue-950 transition-colors"
+        >
+          TAMPILKAN SEMUA PRESTASI
+        </Link>
+      </div>
     </section>
-  )
+  );
 }
 
-export default Prestasi
+export default Prestasi;
