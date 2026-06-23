@@ -15,16 +15,16 @@ function Berita() {
         <span className="w-4 h-1 bg-amber-400"></span>
       </div>
 
-      <div className="flex flex-wrap gap-6 justify-center max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {beritaTampil.map((item) => (
-          <div key={item.id} className="bg-white rounded-lg overflow-hidden w-full md:w-80 shadow-lg">
+          <div key={item.id} className="bg-white rounded-lg overflow-hidden shadow-lg">
 
             {/* Foto + tanggal melayang + efek zoom */}
             <div className="relative overflow-hidden group">
               <img
                 src={item.gambar}
                 alt={item.judul}
-                className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute bottom-0 left-0 bg-blue-950/80 text-white px-4 py-2 z-10">
                 <p className="text-2xl font-bold leading-none">{item.tanggal}</p>

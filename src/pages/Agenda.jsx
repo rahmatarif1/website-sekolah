@@ -23,7 +23,7 @@ function Agenda() {
         <div className="grid md:grid-cols-3 gap-8">
 
           {/* SIDEBAR — kolom kiri */}
-          <aside className="md:col-span-1 space-y-8">
+          <aside className="md:col-span-1 space-y-8 order-2 md:order-1">
 
             {/* Search */}
             <div>
@@ -74,7 +74,7 @@ function Agenda() {
 
           {/* KONTEN — kolom kanan */}
           {/* KONTEN — kolom kanan */}
-<div className="md:col-span-2">
+<div className="md:col-span-2 order-1 md:order-2">
   {agendaTersaring.length > 0 ? (
     agendaTersaring.map((agenda) => (
       <KartuBerita key={agenda.id} berita={agenda} basePath="/agenda" />

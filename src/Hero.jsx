@@ -1,6 +1,22 @@
 import fotoHero from './assets/hero.jpg'
+import { useState } from "react"
+import { useNavigate } from "react-router"
+
+
 
 function Hero() {
+
+  const [kataKunci, setKataKunci] = useState("")
+  const navigate = useNavigate()
+
+  function handleCari() {
+    if (kataKunci.trim() === "") return
+    navigate(`/cari?q=${kataKunci}`)
+  }
+
+
+
+
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 bg-cover bg-center"
@@ -23,13 +39,20 @@ function Hero() {
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center bg-white rounded-full p-2 shadow-lg">
             <input
-              type="text"
-              placeholder="Apa yang ingin anda cari?"
-              className="flex-1 px-4 py-2 bg-transparent outline-none text-slate-700"
-            />
-            <button className="bg-amber-400 text-slate-900 font-bold px-8 py-2 rounded-full hover:bg-amber-300 cursor-pointer">
-              Cari
-            </button>
+  type="text"
+  placeholder="Apa yang ingin anda cari?"
+  value={kataKunci}
+  onChange={(e) => setKataKunci(e.target.value)}
+  onKeyDown={(e) => e.key === "Enter" && handleCari()}
+  className="flex-1 px-4 py-2 bg-transparent outline-none text-slate-700"
+/>
+
+            <button
+  onClick={handleCari}
+  className="bg-amber-400 text-slate-900 font-bold px-8 py-2 rounded-full hover:bg-amber-300 cursor-pointer"
+>
+  Cari
+</button>
           </div>
         </div>
 

@@ -15,9 +15,9 @@ function Home() {
       <Highlight />
       <Berita />
       <Prestasi />
-      <Alumni />
       <Ekskul />
       <Guru />
+      <Alumni />
       <Kontak />
     </>
   );

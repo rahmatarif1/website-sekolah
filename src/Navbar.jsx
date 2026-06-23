@@ -23,6 +23,7 @@ const [scrolled, setScrolled] = useState(false)
   const diBeranda = pathname === "/";
 
   const [strukturHp, setStrukturHp] = useState(false)
+  const [kelasHp, setKelasHp] = useState(false)
   // ...state scrolled yang sudah ada tetap
 
   // navbar solid jika: sudah scroll, ATAU sedang tidak di beranda
@@ -48,7 +49,11 @@ const [scrolled, setScrolled] = useState(false)
         ☰
       </button>
 
-      <Link to="/" className="flex items-center gap-2 md:gap-3 mx-auto md:mx-0">
+      <Link
+  to="/"
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+  className="flex items-center gap-2 md:gap-3 mx-auto md:mx-0"
+>
   <img src={logo} alt="Logo MTs Darul Muttaqin" className="h-8 md:h-10 w-auto" />
   <h2 className="text-base md:text-2xl font-bold text-white">
     <span className="md:hidden">MTs DaMu</span>
@@ -56,7 +61,7 @@ const [scrolled, setScrolled] = useState(false)
   </h2>
 </Link>
       {/* Menu DESKTOP — didorong ke kanan dengan ml-auto */}
-      <ul className="hidden md:flex gap-6 items-center ml-auto">
+      <ul className="hidden md:flex gap-8 items-center ml-auto text-sm">
 
         {/* PROFIL — dropdown... (isi menu desktop tetap sama seperti sekarang) */}
 
@@ -67,7 +72,7 @@ const [scrolled, setScrolled] = useState(false)
           onMouseLeave={() => setBukaProfil(false)}
         >
           <button className="text-white hover:text-gray-300 cursor-pointer">
-            PROFIL ▾
+            PROFIL MADRASAH ▾
           </button>
           {bukaProfil && (
             <ul className="absolute top-full left-0 bg-slate-800 rounded-lg py-2 w-48">
@@ -146,7 +151,6 @@ const [scrolled, setScrolled] = useState(false)
   <Link to="/galeri" className="block px-4 py-2 text-white">
     Galery  </Link>
 </li>
-              <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer"></li>
             </ul>
           )}
         </li>
@@ -167,7 +171,6 @@ const [scrolled, setScrolled] = useState(false)
 <li className="hover:bg-slate-700">
   <Link to="/keuangan/komite" className="block px-4 py-2 text-white">Komite</Link>
 </li>
-              <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer"></li>
             </ul>
           )}
         </li>
@@ -185,10 +188,10 @@ const [scrolled, setScrolled] = useState(false)
             <ul className="absolute top-full left-0 bg-slate-800 rounded-lg py-2 w-48">
                 <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer">E-Learning</li>
               <li className="hover:bg-slate-700 cursor-pointer">
-  <a href="#ekstrakurikuler" className="block px-4 py-2 text-white">
-    Ekstrakurikuler
-  </a>
+              
+  <Link to="/#ekstrakurikuler" className="block px-4 py-2 text-white">Ekstrakurikuler</Link>
 </li>
+
               <li
                 className="relative"
                 onMouseEnter={() => setBukaKelas(true)}
@@ -199,32 +202,37 @@ const [scrolled, setScrolled] = useState(false)
                 </button>
                 {bukaKelas && (
                   <ul className="absolute left-full top-0 bg-slate-800 rounded-lg py-2 w-48">
-                    <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer">OSM</li>
-                    <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer">Khafidz</li>
-                    <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer">Bahasa</li>
+                    <li className="hover:bg-slate-700">
+  <Link to="/kelas/osm" className="block px-4 py-2 text-white cursor-pointer">OSM</Link>
+</li>
+<li className="hover:bg-slate-700">
+  <Link to="/kelas/khafidz" className="block px-4 py-2 text-white cursor-pointer">Khafidz</Link>
+</li>
+<li className="hover:bg-slate-700">
+  <Link to="/kelas/bahasa" className="block px-4 py-2 text-white cursor-pointer">Bahasa</Link>
+</li>
                   </ul>
                 )}
               </li>
-              <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer">Perpustakaan</li>
-              <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer">Layanan Kesiswaan</li>
-              <li className="px-4 py-2 text-white hover:bg-slate-700 cursor-pointer"></li>
+              <li className="hover:bg-slate-700 cursor-pointer">
+              <Link to="/perpustakaan" className="block px-4 py-2 text-white">
+    Perpustakaan  </Link> </li>
+              <li className="hover:bg-slate-700"> <a href="https://forms.gle/FrQWUFPrwhEBBNGw5" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-white cursor-pointer">Layanan Kesiswaan</a>
+</li>
             </ul>
           )}
         </li>
 
+        <Link to="/#prestasi" className="text-white hover:text-gray-300 cursor-pointer">
+    PRESTASI </Link>
         <li>
-  <a href="#prestasi" className="text-white hover:text-gray-300 cursor-pointer">
-    PRESTASI
-  </a>
+  <Link to="/#alumni" className="text-white hover:text-gray-300 cursor-pointer">
+    PROFIL ALUMNI
+  </Link>
 </li>
-        <li>
-          <a href="#alumni" className="text-white hover:text-gray-300 cursor-pointer">
-            PROFIL ALUMNI
-          </a>
-        </li>
-        <li>
-    <a href="#kontak" className="text-white hover:text-gray-300 cursor-pointer">KONTAK</a>
-      </li>
+<li>
+  <Link to="/#kontak" className="text-white hover:text-gray-300 cursor-pointer">KONTAK</Link>
+</li>
       </ul>
 
       {/* OVERLAY gelap — muncul saat drawer terbuka, tap untuk menutup */}
@@ -266,7 +274,11 @@ const [scrolled, setScrolled] = useState(false)
     <Link to="/profil/sambutan" onClick={() => setMenuHp(false)}
     className="block px-10 py-2 text-gray-300">Kata Sambutan</Link>
           </li>
-          <li className="px-10 py-2 text-gray-300 hover:bg-slate-700 cursor-pointer">Sejarah</li>
+          <li className="hover:bg-slate-700">
+  <Link to="/sejarah" onClick={() => setMenuHp(false)} className="block px-10 py-2 text-gray-300">
+    Sejarah
+  </Link>
+</li>
           <li className="hover:bg-slate-700">
   <Link to="/profil/visi-misi" onClick={() => setMenuHp(false)} className="block px-10 py-2 text-gray-300">
     Visi &amp; Misi
@@ -380,30 +392,73 @@ const [scrolled, setScrolled] = useState(false)
       </button>
       {menuAktifHp === 'layanan' && (
         <ul className="bg-slate-900">
+          {/* E-Learning masih placeholder (belum ada halaman/route) */}
           <li className="px-10 py-2 text-gray-300 hover:bg-slate-700 cursor-pointer">E-Learning</li>
-          <li className="px-10 py-2 text-gray-300 hover:bg-slate-700 cursor-pointer">
-            <a href="#ekstrakurikuler" onClick={() => setMenuHp(false)}>Ekstrakurikuler</a>
-            </li>
-          <li className="px-10 py-2 text-gray-300 hover:bg-slate-700 cursor-pointer">Perpustakaan</li>
-          <li className="px-10 py-2 text-gray-300 hover:bg-slate-700 cursor-pointer">Layanan Kesiswaan</li>
+          <li className="hover:bg-slate-700">
+  <Link to="/#ekstrakurikuler" onClick={() => setMenuHp(false)} className="block px-10 py-2 text-gray-300">
+    Ekstrakurikuler
+  </Link>
+</li>
+
+{/* Sub-accordion Kelas Layanan */}
+<li>
+  <button
+    onClick={() => setKelasHp(!kelasHp)}
+    className="w-full text-left px-10 py-2 text-gray-300 hover:bg-slate-700 cursor-pointer flex justify-between items-center"
+  >
+    Kelas Layanan <span>{kelasHp ? '▴' : '▾'}</span>
+  </button>
+
+  {kelasHp && (
+    <ul className="bg-slate-950">
+      <li className="hover:bg-slate-700">
+        <Link to="/kelas/osm" onClick={() => setMenuHp(false)} className="block px-14 py-2 text-gray-400">
+          OSM
+        </Link>
+      </li>
+      <li className="hover:bg-slate-700">
+        <Link to="/kelas/khafidz" onClick={() => setMenuHp(false)} className="block px-14 py-2 text-gray-400">
+          Khafidz
+        </Link>
+      </li>
+      <li className="hover:bg-slate-700">
+        <Link to="/kelas/bahasa" onClick={() => setMenuHp(false)} className="block px-14 py-2 text-gray-400">
+          Bahasa
+        </Link>
+      </li>
+    </ul>
+  )}
+</li>
+
+
+          <li className="hover:bg-slate-700">
+  <Link to="/perpustakaan" onClick={() => setMenuHp(false)} className="block px-10 py-2 text-gray-300">
+    Perpustakaan
+  </Link>
+</li>
+          <li className="hover:bg-slate-700">
+  <a href="https://forms.gle/FrQWUFPrwhEBBNGw5" target="_blank" rel="noopener noreferrer" onClick={() => setMenuHp(false)} className="block px-10 py-2 text-gray-300">
+    Layanan Kesiswaan
+  </a>
+</li>
         </ul>
       )}
     </li>
 
-    <li className="px-6 py-3 text-white hover:bg-slate-700 cursor-pointer">
-        <a href="#prestasi" onClick={() => setMenuHp(false)}>PRESTASI</a>
-        </li>
-    <li className="px-6 py-3 text-white hover:bg-slate-700 cursor-pointer">
-      <a href="#alumni" onClick={() => setMenuHp(false)}>PROFIL ALUMNI</a>
-    </li>
-    <li>
-  
-    <a href="#kontak"
-    onClick={() => setMenuHp(false)}
-    className="block px-6 py-3 text-white hover:bg-slate-700 cursor-pointer"
-  >
+    <li className="hover:bg-slate-700">
+  <Link to="/#prestasi" onClick={() => setMenuHp(false)} className="block px-6 py-3 text-white">
+    PRESTASI
+  </Link>
+</li>
+    <li className="hover:bg-slate-700">
+  <Link to="/#alumni" onClick={() => setMenuHp(false)} className="block px-6 py-3 text-white">
+    PROFIL ALUMNI
+  </Link>
+</li>
+    <li className="hover:bg-slate-700">
+  <Link to="/#kontak" onClick={() => setMenuHp(false)} className="block px-6 py-3 text-white">
     KONTAK
-  </a>
+  </Link>
 </li>
   </ul>
 </div>

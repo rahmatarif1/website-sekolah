@@ -20,7 +20,7 @@ function KeuanganBos() {
         <div className="grid md:grid-cols-3 gap-8">
 
           {/* SIDEBAR */}
-          <aside className="md:col-span-1 space-y-8">
+          <aside className="md:col-span-1 space-y-8 order-2 md:order-1">
 
             {/* Search */}
             <div>
@@ -55,7 +55,7 @@ function KeuanganBos() {
           </aside>
 
           {/* KONTEN */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 order-1 md:order-2">
             {tersaring.length > 0 ? (
               tersaring.map((item) => (
                 <KartuBerita key={item.id} berita={item} basePath="/keuangan/detail" />

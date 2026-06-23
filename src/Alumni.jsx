@@ -7,7 +7,6 @@ function Alumni() {
   const [mulai, setMulai] = useState(0)
   const [transisiAktif, setTransisiAktif] = useState(true)
 
-  // Deteksi lebar layar
   useEffect(() => {
     const aturPerView = () => setPerView(window.innerWidth < 768 ? 1 : 2)
     aturPerView()
@@ -15,15 +14,11 @@ function Alumni() {
     return () => window.removeEventListener('resize', aturPerView)
   }, [])
 
-  // Timer geser otomatis
   useEffect(() => {
-    const timer = setInterval(() => {
-      setMulai((prev) => prev + 1)
-    }, 6000)
+    const timer = setInterval(() => setMulai((prev) => prev + 1), 6000)
     return () => clearInterval(timer)
   }, [])
 
-  // Reset diam-diam saat sampai set kedua
   useEffect(() => {
     if (mulai >= alumni.length) {
       const t = setTimeout(() => {
@@ -42,7 +37,7 @@ function Alumni() {
   const kartuGanda = [...alumni, ...alumni]
 
   return (
-    <section id="alumni" className="px-8 py-16 bg-blue-950">
+    <section id="alumni" className="px-8 pt-16 pb-24 bg-blue-950">
       <h2 className="text-3xl font-bold text-white text-center mb-2">
         Profil Alumni
       </h2>
@@ -51,7 +46,7 @@ function Alumni() {
         <span className="w-4 h-1 bg-amber-400"></span>
       </div>
 
-      <div className="relative max-w-6xl mx-auto group">
+      <div className="relative max-w-7xl mx-auto group">
 
         {/* Panah kiri */}
         <button
@@ -70,11 +65,11 @@ function Alumni() {
             {kartuGanda.map((item, index) => (
               <div key={index} className="w-full md:w-1/2 shrink-0 px-3">
                 <Link to={'/alumni/' + item.id} className="block h-full">
-                  <div className="bg-blue-900/50 border border-blue-800 rounded-lg p-6 flex flex-col md:flex-row gap-4 h-full items-center md:items-start text-center md:text-left transition hover:border-amber-400">
-                    <img src={item.foto} alt={item.nama} className="w-32 h-40 object-cover rounded shrink-0" />
+                  <div className="bg-blue-900/50 border border-blue-800 rounded-lg p-10 flex flex-col md:flex-row gap-6 h-full items-center md:items-start text-center md:text-left transition hover:border-amber-400">
+                    <img src={item.foto} alt={item.nama} className="w-44 h-56 object-cover rounded shrink-0" />
                     <div>
-                      <h3 className="text-amber-400 font-bold mb-2">{item.nama}</h3>
-                      <p className="text-gray-300 text-sm">
+                      <h3 className="text-amber-400 font-bold text-lg md:text-xl mb-3">{item.nama}</h3>
+                      <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                         <span className="text-amber-400 text-2xl">"</span>
                         {item.kisah}
                       </p>

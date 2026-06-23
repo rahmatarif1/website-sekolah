@@ -20,6 +20,13 @@ import KeuanganKomite from "./pages/KeuanganKomite";
 import PrestasiDaftar from "./pages/PrestasiDaftar";
 import PrestasiDetail from "./pages/PrestasiDetail";
 import AlumniDetail from './pages/AlumniDetail'
+import Perpustakaan from './pages/Perpustakaan'
+import UsulanBuku from './pages/UsulanBuku'
+import PeminjamanBuku from './pages/PeminjamanBuku'
+import GuruDetail from './pages/GuruDetail'
+import EkstrakurikulerDetail from './pages/EkstrakurikulerDetail'
+import NotFound from './pages/NotFound'
+import HasilCari from './pages/HasilCari'
 
 
 
@@ -40,15 +47,23 @@ function App() {
         <Route path="info-sekolah" element={<InfoSekolah />} />
         <Route path="info-sekolah/:id" element={<InfoDetail />} />
         <Route path="agenda" element={<Agenda />} />
-<Route path="agenda/:id" element={<AgendaDetail />} />
-<Route path="galeri" element={<Galeri />} />
-<Route path="keuangan/bos" element={<KeuanganBos />} />
-<Route path="keuangan/detail/:id" element={<KeuanganDetail />} />
-<Route path="keuangan/komite" element={<KeuanganKomite />} />
-<Route path="prestasi" element={<PrestasiDaftar />} />
-<Route path="prestasi/:id" element={<PrestasiDetail />} />
-<Route path="/alumni/:id" element={<AlumniDetail />} />
+        <Route path="agenda/:id" element={<AgendaDetail />} />
+        <Route path="galeri" element={<Galeri />} />
+        <Route path="keuangan/bos" element={<KeuanganBos />} />
+        <Route path="keuangan/detail/:id" element={<KeuanganDetail />} />
+        <Route path="keuangan/komite" element={<KeuanganKomite />} />
+        <Route path="prestasi" element={<PrestasiDaftar />} />
+        <Route path="prestasi/:id" element={<PrestasiDetail />} />
+        <Route path="/alumni/:id" element={<AlumniDetail />} />
+        <Route path="/perpustakaan" element={<Perpustakaan />} />
+        <Route path="/usulan-buku" element={<UsulanBuku />} />
+        <Route path="/peminjaman-buku" element={<PeminjamanBuku />} />
+        <Route path="/guru/:id" element={<GuruDetail />} />
+        <Route path="/ekstrakurikuler/:id" element={<EkstrakurikulerDetail />} />
+        <Route path="/cari" element={<HasilCari />} />
+       
       </Route>
+       <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

@@ -1,17 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router'
+import { guru } from './data/guruData'
 
 function Guru() {
-  const guru = [
-    { nama: "Sholihuddin, S.Pd.I., Gr..", jabatan: "Kepala Madrasah", foto: "/guru1.jpg" },
-    { nama: "Nur Huda, S.Pd., Gr", jabatan: "Waka Kurikulum", foto: "/guru2.jpg" },
-    { nama: "Prihatin, S.Pd.", jabatan: "Kepala Perpustakaan", foto: "/guru3.jpg" },
-    { nama: "Endang Sujarwati, S.Pd.I", jabatan: "Bahasa Inggris", foto: "/guru4.jpg" },
-    { nama: "Rahmat Arif Setiawan, S.Pd", jabatan: "Pendidikan Jasmani, Olahraga & Kesehatan", foto: "/guru5.jpg" },
-    { nama: "Siti Muhimatul hoiroh, S.Pd.I", jabatan: "Akidah Akhlak", foto: "/guru6.jpg" },
-    { nama: "Wahyu Prasetyo Putra, S.Pd., Gr", jabatan: "IPA", foto: "/guru7.jpg" },
-    { nama: "Fauziyatul Iffah, Lc., M.Pd.", jabatan: "IPA Terpadu", foto: "/guru8.jpg" },
-  ]
-
   const [perView, setPerView] = useState(5)
   const [mulai, setMulai] = useState(0)
   const [transisiAktif, setTransisiAktif] = useState(true)
@@ -35,14 +26,12 @@ function Guru() {
   // Reset diam-diam saat sampai set kedua
   useEffect(() => {
     if (mulai >= guru.length) {
-      // Tunggu animasi geser selesai (durasi 500ms), lalu reset tanpa transisi
       const t = setTimeout(() => {
-        setTransisiAktif(false)       // matikan animasi
-        setMulai(mulai - guru.length) // lompat balik ke posisi identik
+        setTransisiAktif(false)
+        setMulai(mulai - guru.length)
       }, 500)
       return () => clearTimeout(t)
     } else {
-      // Nyalakan lagi transisi untuk geser berikutnya
       setTransisiAktif(true)
     }
   }, [mulai])
@@ -50,7 +39,6 @@ function Guru() {
   const geser = () => setMulai((prev) => prev + 1)
   const mundur = () => setMulai((prev) => (prev <= 0 ? guru.length - 1 : prev - 1))
 
-  // Gandakan kartu: [guru..., guru...]
   const kartuGanda = [...guru, ...guru]
 
   return (
@@ -81,13 +69,13 @@ function Guru() {
           >
             {kartuGanda.map((item, index) => (
               <div key={index} className="w-full md:w-1/5 shrink-0 px-3">
-                <div className="relative">
+                <Link to={'/guru/' + item.id} className="block relative group/kartu">
                   <img src={item.foto} alt={item.nama} className="w-full h-72 object-cover rounded-lg" />
-                  <div className="bg-white rounded-lg shadow-md p-4 text-center mx-3 -mt-10 relative z-10">
+                  <div className="bg-white rounded-lg shadow-md p-4 text-center mx-3 -mt-10 relative z-10 transition group-hover/kartu:shadow-xl">
                     <h3 className="font-bold text-blue-950 text-sm">{item.nama}</h3>
                     <p className="text-amber-500 text-sm">{item.jabatan}</p>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>

@@ -2,10 +2,9 @@ import { Mail, MapPin, Phone, Printer } from 'lucide-react'
 
 function Kontak() {
   const kontak = [
-    { Icon: Mail, label: "Email", isi: "humas@mtsdarulmuttaqin.sch.id" },
-    { Icon: MapPin, label: "Alamat", isi: "Jl. Contoh Alamat No.10, Kota, Kalimantan Selatan 70000" },
-    { Icon: Phone, label: "Telepon", isi: "0511 - 123456" },
-    { Icon: Printer, label: "Fax", isi: "0511 - 123457" },
+    { Icon: Mail, label: "Email", isi: "mtsdarulmuttaqin@gmail.com" },
+    { Icon: MapPin, label: "Alamat", isi: "Jl. A. Yani KM 46, Pangkalan Dewa, Pangkalan Lada, Kotawaringin Barat , Kalimantan Tengah 74184" },
+    { Icon: Phone, label: "Telepon", isi: "0813 4843 0221" },
   ]
 
   return (
