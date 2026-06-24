@@ -37,7 +37,7 @@ function Alumni() {
   const kartuGanda = [...alumni, ...alumni]
 
   return (
-    <section id="alumni" className="px-8 pt-16 pb-24 bg-blue-950">
+    <section id="alumni" className="px-8 pt-16 pb-24 bg-blue-950"> 
       <h2 className="text-3xl font-bold text-white text-center mb-2">
         Profil Alumni
       </h2>

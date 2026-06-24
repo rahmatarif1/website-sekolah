@@ -42,7 +42,7 @@ function Guru() {
   const kartuGanda = [...guru, ...guru]
 
   return (
-    <section id="guru" className="px-8 py-16 bg-slate-100">
+    <section id="guru" className="px-8 py-16 bg-slate-100 min-h-screen">
       <h2 className="text-3xl font-bold text-blue-950 text-center mb-2">
         Guru dan Tenaga Kependidikan
       </h2>

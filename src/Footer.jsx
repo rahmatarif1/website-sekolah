@@ -2,6 +2,9 @@ import { Link } from "react-router";
 import logo from './assets/logo.png'
 import { infoData } from "./data/infoData";
 import { agendaData } from "./data/agendaData";
+import { FaTiktok } from "react-icons/fa6"
+import { FaInstagram } from "react-icons/fa6"
+import { FaYoutube } from "react-icons/fa6"
 
 function Footer() {
   // ambil 2 teratas dari masing-masing data terpusat
@@ -23,10 +26,31 @@ function Footer() {
             berilmu, dan berprestasi, dengan landasan nilai-nilai keislaman.
           </p>
           <div className="flex gap-3">
-            <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">f</a>
-            <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">IG</a>
-            <a href="#" className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors text-sm font-bold">YT</a>
-          </div>
+  
+    <a href="https://instagram.com/mtsdarulmuttaqin"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors"
+  >
+    <FaInstagram />
+  </a>
+  
+    <a href="https://youtube.com/@mtsdarulmuttaqin"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors"
+  >
+    <FaYoutube />
+  </a>
+  
+    <a href="https://tiktok.com/@mtsdarulmuttaqin"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-gray-500 rounded-full w-10 h-10 flex items-center justify-center hover:bg-amber-400 hover:text-blue-950 transition-colors"
+  >
+    <FaTiktok />
+  </a>
+</div>
         </div>
 
         {/* KOLOM 2 — Info Sekolah */}

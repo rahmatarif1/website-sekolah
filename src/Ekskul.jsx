@@ -19,9 +19,9 @@ function Ekskul() {
             <Link
               key={item.id}
               to={'/ekstrakurikuler/' + item.id}
-              className="bg-white rounded-lg p-4 md:p-10 flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left hover:shadow-xl transition-shadow cursor-pointer"
+              className="bg-white rounded-lg p-4 md:p-16 flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left hover:shadow-xl transition-shadow cursor-pointer"
             >
-              <Icon className={`w-12 h-12 md:w-16 md:h-16 shrink-0 ${item.warna}`} strokeWidth={1.5} />
+              <Icon className={`w-12 h-12 md:w-15 md:h-15 shrink-0 ${item.warna}`} strokeWidth={1.5} />
               <h3 className="font-bold text-blue-950 text-sm md:text-base">{item.nama}</h3>
             </Link>
           )

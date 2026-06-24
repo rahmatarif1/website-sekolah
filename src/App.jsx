@@ -27,6 +27,7 @@ import GuruDetail from './pages/GuruDetail'
 import EkstrakurikulerDetail from './pages/EkstrakurikulerDetail'
 import NotFound from './pages/NotFound'
 import HasilCari from './pages/HasilCari'
+import KelasLayanan from "./pages/KelasLayanan"   // sesuaikan path-nya
 
 
 
@@ -61,7 +62,7 @@ function App() {
         <Route path="/guru/:id" element={<GuruDetail />} />
         <Route path="/ekstrakurikuler/:id" element={<EkstrakurikulerDetail />} />
         <Route path="/cari" element={<HasilCari />} />
-       
+       <Route path="/kelas/:slug" element={<KelasLayanan />} />
       </Route>
        <Route path="*" element={<NotFound />} />
     </Routes>

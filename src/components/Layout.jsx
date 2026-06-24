@@ -16,12 +16,15 @@ const location = useLocation();
 
 useEffect(() => {
   if (location.hash) {
-    const el = document.querySelector(location.hash);
+    const el = document.querySelector(location.hash)
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth" })
+      }, 100)
     }
   }
-}, [location]);
+}, [location])
+
 
 
   return (
